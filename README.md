@@ -1,4 +1,4 @@
-# 🛡️ CODEX BAILEYS ⚡
+#CODEX BAILEYS ⚡
 
 <p align="center">
   <img src="https://i.ibb.co/zHHHGVrR/Codex.jpg" >
