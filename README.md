@@ -1,30 +1,32 @@
-# 🐺 FENRIR-X BAILEYS ⚡
+# 🛡️ CODEX BAILEYS ⚡
 
 <p align="center">
-  <img src="https://telegra.ph/file/your-logo-link-here.jpg" alt="FENRIR-X" width="200">
+  <img src="https://i.ibb.co/zHHHGVrR/Codex.jpg" >
 </p>
 
 <p align="center">
-  <strong>Modified High-Performance Baileys Library for Professional Bot Development.</strong>
+  <strong>Advanced WhatsApp Web API Library – Built for Speed, Stability & Branding</strong>
 </p>
+
+[![GitHub stars](https://img.shields.io/github/stars/codex1208118/Codex-Baileys?style=social)](https://github.com/codex1208118/Codex-Baileys)
+[![npm version](https://img.shields.io/npm/v/codex-baileys?color=green)](https://www.npmjs.com/package/codex-baileys)
 
 ---
 
 ## 🚀 Key Features
-- ✅ **Custom Pairing Code:** Force-set your brand name (e.g., FENRIRXT) as pairing code.
-- ✅ **All pairnig issue solved:** you don't see any pairnig issue
-- ✅ **Optimized Socket:** Faster connection and low-latency performance.
-- ✅ **Obfuscated Core:** Protected logic to prevent unauthorized code theft.
-- ✅ **Anti-ban:** I try to resolve ban issues and make it full Anti-ban
-- ✅ **Channel support:** all chats working even channels.
-- ✅ **JId support:** I try to resolve better JId
-- ✅ **latest balliyes:** I use latest balliyes for making more compatible.
+
+- 🛡️ **AI Tag (Anti‑Ban):** Automatically sets browser to `CODEX-AI` – helps avoid WhatsApp bans.
+- 🐉 **Kali Dragon Logo:** Distinctive ASCII dragon on terminal startup – unmatched branding.
+- ⚡ **Perfect Pairing:** All pairing issues resolved – get your pair code every time without failure.
+- 🔒 **Obfuscated Core:** Core logic protected to prevent unauthorized modifications.
+- 🧠 **Optimized Socket:** Faster connection, lower latency, and smooth message handling.
+- 📦 **Latest Baileys:** Built on top of the most stable Baileys version available.
 
 ---
 
 ## 📦 Installation
 
-To use **FENRIR-X Baileys** in your project, update your `package.json` dependencies:
+Update your `package.json`:
 
 ```json
-"@whiskeysockets/baileys": "github:FENRIR-X/Fenrir-baileys",
+"@whiskeysockets/baileys": "github:codex1208118/Codex-Baileys"
