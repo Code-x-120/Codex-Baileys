@@ -1,5 +1,6 @@
 {
     "name": "codex-baileys",
+    "type": "module",
     "version": "7.0.16",
     "description": "WhatsApp API Modification By Codex",
     "keywords": [
