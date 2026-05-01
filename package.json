@@ -1,5 +1,5 @@
 {
-    "name": "codex-baileys",
+    "name": "@whiskeysockets/baileys",
     "type": "module",
     "version": "7.0.16",
     "description": "WhatsApp API Modification By Codex",
