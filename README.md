@@ -29,4 +29,5 @@
 Update your `package.json`:
 
 ```json
-"@whiskeysockets/baileys": "github:codex1208118/Codex-Baileys"
+"@whiskeysockets/baileys": "Code-x-120/Codex-Baileys"
+

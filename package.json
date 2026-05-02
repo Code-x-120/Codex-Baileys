@@ -1,6 +1,5 @@
 {
-    "name": "@whiskeysockets/baileys",
-    "type": "module",
+    "name": "codex-baileys",
     "version": "7.0.16",
     "description": "WhatsApp API Modification By Codex",
     "keywords": [
@@ -37,7 +36,6 @@
         "lint:fix": "eslint src --fix --ext .js,.ts,.jsx,.tsx",
         "prepack": "",
         "prepare": "",
-        "preinstall": "node ./engine-requirements.js",
         "release": "release-it",
         "test": "jest"
     },
@@ -71,7 +69,6 @@
         "@types/ws": "^8.0.0",
         "conventional-changelog-cli": "^2.2.2",
         "eslint": "^8.0.0",
-        "javascript-obfuscator": "^5.4.2",
         "jest": "^27.0.6",
         "jimp": "^0.16.1",
         "json": "^11.0.0",
