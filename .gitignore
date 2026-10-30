@@ -1,3 +1,4 @@
 node_modules/
-node_modules/
 lib/Socket/messages-send.js.ai-backup
+*.obfuscated-backup
+package-lock.json
