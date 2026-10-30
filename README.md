@@ -192,6 +192,7 @@ await sock.getPNForLID('123...@lid')
 | `WA_AI_TAG` | off | `1` = private messages par AI/bot badge |
 | `MAX_MSG_RETRY` | `5` | Baileys retry limit (max 20) |
 | `WA_SYNC_HISTORY` | on | `0` = history sync off (RAM bachao) |
+| `WA_DM_DEBUG` | off | `1` = DM send ka device/jid map console par log |
 | `LOG_LEVEL` | `warn` | pino level: `silent`..`trace` |
 | `WA_VERSION_TIMEOUT_MS` | `10000` | version fetch timeout |
 
