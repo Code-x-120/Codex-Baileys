@@ -124,6 +124,67 @@ sock.ev.on('stream.error', ({ reason, statusCode }) => {
 
 ---
 
+## ✨ Advanced Message Shortcuts
+
+`sendMessage` ab seedha yeh shapes leta hai (andar proto/dugong shape me convert ho jate hain):
+
+```js
+// View-once media
+await sock.sendMessage(jid, { image: { url: 'x.jpg' }, caption: 'Ek dafa dekho', viewOnce: true })
+
+// Native-flow buttons
+await sock.sendMessage(jid, {
+  text: 'Kya karna hai?',
+  title: 'Menu',
+  footer: 'Codex Mini Bot',
+  interactiveButtons: [
+    { name: 'quick_reply', buttonParamsJson: JSON.stringify({ display_text: 'Confirm', id: 'confirm' }) },
+    { name: 'cta_url', buttonParamsJson: JSON.stringify({ display_text: 'Website', url: 'https://example.com' }) }
+  ]
+})
+
+// Album / carousel
+await sock.sendAlbumMessage(jid, [
+  { image: { url: 'a.jpg' }, caption: 'Pehli' },
+  { image: { url: 'b.jpg' }, caption: 'Doosri' }
+])
+
+// Event invite
+await sock.sendMessage(jid, { event: { name: 'Meeting', startTime: Date.now(), endTime: Date.now() + 3600000 } })
+
+// Product card
+await sock.sendMessage(jid, {
+  product: { title: 'Tee', productImage: { url: 'p.jpg' }, priceAmount1000: 2000000, currencyCode: 'PKR' },
+  businessOwnerJid: '923xxxxxxxxx@s.whatsapp.net'
+})
+
+// Payment request
+await sock.sendMessage(jid, { requestPayment: { amount: 10000000, currency: 'PKR', from: '923xxxxxxxxx@s.whatsapp.net', note: 'Order #1' } })
+
+// Poll
+await sock.sendMessage(jid, { poll: { name: 'Food?', options: ['Pizza', 'Pasta'], selectableCount: 1 } })
+
+// Phone number share/request (messages.js built-in)
+await sock.sendMessage(jid, { text: 'Number share karo', requestPhoneNumber: true })
+await sock.sendMessage(jid, { text: 'Mera number', sharePhoneNumber: true })
+```
+
+Helpers:
+
+```js
+await sock.sendMentionAll(groupJid, { text: 'Attention!' })
+await sock.sendStatusMentions({ text: 'Status text' }, ['9231...', '9232...']) // max 5
+
+const ids = await sock.findUserId('923xxxxxxxxx')
+// { phoneNumber: '923...@s.whatsapp.net', lid: '123...@lid', raw }
+await sock.getLIDForPN('923...@s.whatsapp.net')
+await sock.getPNForLID('123...@lid')
+```
+
+> Note: `spoiler: true` is fork/proto me available nahi — WhatsApp ka spoiler field is proto build me nahi hai.
+
+---
+
 ## ⚙️ Environment Variables
 
 | Variable | Default | Kaam |

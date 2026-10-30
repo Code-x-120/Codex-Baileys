@@ -37,6 +37,12 @@ export type BroadcastOptions = {
 export type WASocket = ReturnType<typeof makeWASocket> & {
     broadcast: (jids: string[], message: any, options?: BroadcastOptions) => Promise<BroadcastResult>;
     broadcastNewsletter: (jids: string[], message: any, options?: BroadcastOptions) => Promise<BroadcastResult>;
+    sendAlbumMessage: (jid: string, album: any[], options?: Record<string, any>) => Promise<any>;
+    sendMentionAll: (jid: string, content: any, options?: Record<string, any>) => Promise<any>;
+    sendStatusMentions: (content: any, mentions: string[], options?: Record<string, any>) => Promise<any>;
+    findUserId: (input: string) => Promise<{ phoneNumber: string | null; lid: string | null; raw: any }>;
+    getLIDForPN: (pn: string) => Promise<string | null>;
+    getPNForLID: (lid: string) => Promise<string | null>;
 };
 
 export { makeWASocket };
