@@ -12,6 +12,10 @@ import { ConnectionState } from './State';
 export type BaileysEventMap = {
     /** connection state has been updated -- WS closed, opened, connecting etc. */
     'connection.update': Partial<ConnectionState>;
+    /** Codex: auth failure (401/403/419) — auth delete/re-pair signal */
+    'auth.failure': { statusCode?: number; loggedOut: boolean; at: number; error?: any };
+    /** Codex: stream error telemetry (503/ack/conflict etc.) */
+    'stream.error': { reason: string; statusCode?: number; at: number };
     /** credentials updated -- some metadata, keys or something */
     'creds.update': Partial<AuthenticationCreds>;
     /** set chats (history sync), everything is reverse chronologically sorted */

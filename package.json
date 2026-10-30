@@ -1,6 +1,6 @@
 {
     "name": "codex-baileys",
-    "version": "7.0.16",
+    "version": "7.0.17",
     "description": "WhatsApp API Modification By Codex",
     "keywords": [
         "whatsapp",
@@ -12,9 +12,10 @@
         "botwa",
         "stvnnvs"
     ],
-    "homepage": "https://github.com/RILLYZY/bails",
+    "homepage": "https://github.com/Code-x-120/Codex-Baileys",
     "repository": {
-        "url": "https://github.com/RILLYZY/bails"
+        "type": "git",
+        "url": "git+https://github.com/Code-x-120/Codex-Baileys.git"
     },
     "license": "MIT",
     "author": "Ahmed",
@@ -105,5 +106,8 @@
     "packageManager": "yarn@1.22.19",
     "engines": {
         "node": ">=18"
+    },
+    "bugs": {
+        "url": "https://github.com/Code-x-120/Codex-Baileys/issues"
     }
 }

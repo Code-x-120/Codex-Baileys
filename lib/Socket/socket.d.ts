@@ -35,6 +35,16 @@ export declare const makeSocket: (config: SocketConfig) => {
     onUnexpectedError: (err: Error | Boom, msg: string) => void;
     uploadPreKeys: (count?: number) => Promise<void>;
     uploadPreKeysToServerIfRequired: () => Promise<void>;
+    getStats: () => {
+        uptimeMs: number;
+        connected: boolean;
+        lastRecvAgoMs: number;
+        sentNodes: number;
+        recvNodes: number;
+        reconnects: number;
+        prekeysServer: number | null;
+    };
+    ping: () => Promise<BinaryNode>;
     requestPairingCode: (phoneNumber: string) => Promise<string>;
     /** Waits for the connection to WA to reach a state */
     waitForConnectionUpdate: (check: (u: Partial<import("../Types").ConnectionState>) => boolean | undefined, timeoutMs?: number | undefined) => Promise<void>;

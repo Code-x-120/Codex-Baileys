@@ -8,26 +8,140 @@
   <strong>Advanced WhatsApp Web API Library – Built for Speed, Stability & Branding</strong>
 </p>
 
-[![GitHub stars](https://img.shields.io/github/stars/codex1208118/Codex-Baileys?style=social)](https://github.com/codex1208118/Codex-Baileys)
-[![npm version](https://img.shields.io/npm/v/codex-baileys?color=green)](https://www.npmjs.com/package/codex-baileys)
-
 ---
 
 ## 🚀 Key Features
 
-- 🛡️ **AI Tag (Anti‑Ban):** Automatically sets browser to `CODEX-AI` – helps avoid WhatsApp bans.
-- 🐉 **Kali Dragon Logo:** Distinctive ASCII dragon on terminal startup – unmatched branding.
-- ⚡ **Perfect Pairing:** All pairing issues resolved – get your pair code every time without failure.
-- 🔒 **Obfuscated Core:** Core logic protected to prevent unauthorized modifications.
-- 🧠 **Optimized Socket:** Faster connection, lower latency, and smooth message handling.
-- 📦 **Latest Baileys:** Built on top of the most stable Baileys version available.
+- 🛡️ **AI Tag (opt-in):** `WA_AI_TAG=1` set karne par outgoing private messages ke sath `biz_bot` node jata hai. Default **OFF** hai — isse DM commands "waiting" par atakna band ho gaya.
+- ⚡ **Perfect Pairing:** Pair code flow stable — WS open hone ke baad hi code request hota hai.
+- 🧠 **Optimized Socket:** Pre-key auto top-up (har 10 min check), ghost-close guard, 4h stream refresh friendly.
+- 📊 **Runtime Stats:** `sock.getStats()` se uptime, sent/recv nodes, last receive gap, prekey count.
+- 💓 **Cheap Keepalive:** `sock.ping()` — passive IQ, bot ko apna ping na banana pade.
+- 📢 **Bulk Send:** `sock.broadcast(jids, message, opts)` — concurrency + jitter + per-chat progress.
+- 🧾 **Telemetry Events:** `sock.ev.on('stream.error')` aur `sock.ev.on('auth.failure')`.
+- 📦 **Latest Baileys:** Version fallback chain (fork → WhiskeySockets → live WA `sw.js` → bundled).
+- 🔓 **Decrypted Core:** `lib/index.js`, `lib/Socket/newsletter.js` aur `lib/Utils/messages.js` ab readable (obfuscation hata di gayi).
 
 ---
 
 ## 📦 Installation
 
-Update your `package.json`:
+`package.json` me:
+
+```json
+"baileys": "git+https://github.com/Code-x-120/Codex-Baileys.git"
+```
+
+Ya npm style:
 
 ```json
 "@whiskeysockets/baileys": "Code-x-120/Codex-Baileys"
+```
 
+Phir:
+
+```bash
+npm install --legacy-peer-deps
+```
+
+> Node.js **18+** required (`engines` me enforce hai).
+
+---
+
+## 🔑 Pairing
+
+```js
+const { makeWASocket, useMultiFileAuthState } = require('baileys')
+
+const { state, saveCreds } = await useMultiFileAuthState('auth')
+const sock = makeWASocket({ auth: state, printQRInTerminal: false })
+sock.ev.on('creds.update', saveCreds)
+
+if (!sock.authState.creds.registered) {
+  const code = await sock.requestPairingCode('923xxxxxxxxx')
+  console.log('Pair code:', code)
+}
+```
+
+---
+
+## 🧩 Naye APIs
+
+### `sock.getStats()`
+
+```js
+const st = sock.getStats()
+// {
+//   uptimeMs, connected, lastRecvAgoMs,
+//   sentNodes, recvNodes, reconnects, prekeysServer
+// }
+```
+
+### `sock.ping()`
+
+```js
+await sock.ping() // lightweight IQ — rtt measure karne ke liye
+```
+
+### `sock.broadcast(jids, message, options)`
+
+```js
+const res = await sock.broadcast(groups, { text: 'Hello' }, {
+  concurrency: 3,     // 1..5, default 3
+  minDelayMs: 500,    // per-send minimum gap
+  jitterMs: 500,      // random extra gap
+  stopOnAuthError: true,
+  onProgress: p => console.log(p.status, p.done, '/', p.total)
+})
+// res = { total, sent: [jid], failed: [{ jid, error }], aborted }
+```
+
+Progress event:
+
+```js
+sock.ev.on('broadcast.progress', p => { /* ... */ })
+```
+
+### `sock.broadcastNewsletter(jids, message, options)`
+
+Newsletter JIDs ke liye wahi helper, `newsletterOptions` pass-through ke sath.
+
+### Auth failure
+
+```js
+sock.ev.on('auth.failure', ({ statusCode }) => {
+  // 401 / 403 / 419 => creds delete karke re-pair karo
+})
+```
+
+### Stream errors
+
+```js
+sock.ev.on('stream.error', ({ reason, statusCode }) => {
+  // 'ack', 'conflict', 'replaced', '503' etc.
+})
+```
+
+---
+
+## ⚙️ Environment Variables
+
+| Variable | Default | Kaam |
+|---|---|---|
+| `WA_AI_TAG` | off | `1` = private messages par AI/bot badge |
+| `MAX_MSG_RETRY` | `5` | Baileys retry limit (max 20) |
+| `WA_SYNC_HISTORY` | on | `0` = history sync off (RAM bachao) |
+| `LOG_LEVEL` | `warn` | pino level: `silent`..`trace` |
+| `WA_VERSION_TIMEOUT_MS` | `10000` | version fetch timeout |
+
+---
+
+## 📡 Official Channel
+
+Follow: [`120363401988730209@newsletter`](https://whatsapp.com/channel/120363401988730209)
+
+---
+
+## 📄 License
+
+MIT
